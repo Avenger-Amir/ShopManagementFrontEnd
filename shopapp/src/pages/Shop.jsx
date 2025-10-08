@@ -7,6 +7,7 @@ import { AuthenticationInfo } from "../App";
 import Profile from "../components/Profile.jsx";
 import Cart from "./Cart.jsx";
 import { Link } from "react-router-dom";
+import {getSessionId, getUserName} from "../util/LocalStorageUtil.js";
 
 
 export default function Shop() {
@@ -14,8 +15,8 @@ export default function Shop() {
   const [shopIdToName, setShops] = useState([{ id: '0', name: 'All Shops' }]);
   const [selectedShopId, setSelectedShopId] = useState('0');
 
-  const sessionId = localStorage.getItem("sessionId");
-  const userName = localStorage.getItem("userName");
+  const sessionId = getSessionId();
+  const userName = getUserName();
 
   useEffect(() => {
     const fetchShops = async () => {

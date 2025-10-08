@@ -24,9 +24,9 @@ export default function Cart() {
         }
         try {
             const res = api.post("/shop/order", {
-                    "shop_id": items[0].shop_id, "shop_order_list": items.map((item) => ({
+                    "shop_id": items[0].shop_id, "status": "ORDERED", "shop_order_list": items.map((item) => ({
                         item_id: item.id,
-                        quantity: item.quantity,
+                        quantity: item.quantity
                     }))
                 },
                 {

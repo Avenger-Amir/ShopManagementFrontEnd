@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ItemForm = ({ sessionId, shopId, onItemAdded }) => {
+const ItemForm = ({ sessionId, shopId, }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);

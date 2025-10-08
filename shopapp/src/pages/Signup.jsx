@@ -1,8 +1,10 @@
 // src/pages/Signup.jsx
-import { useState, useContext } from "react";
+import { useState } from "react";
 import api from "../api/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { AuthenticationInfo } from "../App";
+import {setSessionId, setUserName} from "../util/LocalStorageUtil.js";
+
 export default function Signup() {
   const [form, setForm] = useState({
     user_name: "",
@@ -13,7 +15,7 @@ export default function Signup() {
   });
   const navigate = useNavigate();
   // const { login } = useAuth();
-  const {userName, sessionId, expiryTime, setUserName, setSessionId, setExpiryTime } = useContext(AuthenticationInfo);
+  // const {userName, sessionId, expiryTime, setUserName, setSessionId, setExpiryTime } = useContext(AuthenticationInfo);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -29,11 +31,11 @@ export default function Signup() {
         const sessionId = res.headers["x-session-id"];
         setSessionId(sessionId);
         setUserName(form.user_name);
-        localStorage.setItem("sessionId", sessionId);
-        localStorage.setItem("userName", form.user_name);
-        const expiry = new Date();
-        expiry.setHours(expiry.getHours() + 0.1);
-        setExpiryTime(expiry);
+        // localStorage.setItem("sessionId", sessionId);
+        // localStorage.setItem("userName", form.user_name);
+        // const expiry = new Date();
+        // expiry.setHours(expiry.getHours() + 0.1);
+        // setExpiryTime(expiry);
         // login(sessionId, res.data);
         
         navigate("/shop");  // 🚀 redirect to shop page

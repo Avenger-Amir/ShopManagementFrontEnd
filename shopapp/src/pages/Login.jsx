@@ -1,8 +1,9 @@
 // src/pages/Login.jsx
-import { useState, useContext } from "react";
+import { useState } from "react";
 import api from "../api/axiosConfig";
 // import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import {setSessionId, setUserName} from "../util/LocalStorageUtil.js";
 import { AuthenticationInfo } from "../App";
 
 
@@ -10,7 +11,7 @@ export default function Login() {
   // const { login } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ number: "", password: "" });
-  const {userName, sessionId, expiryTime, setUserName, setSessionId, setExpiryTime } = useContext(AuthenticationInfo);
+  // const {userName, sessionId, expiryTime, setUserName, setSessionId, setExpiryTime } = useContext(AuthenticationInfo);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,9 +24,9 @@ export default function Login() {
       // login(sessionId);
       setSessionId(sessionId);
       setUserName(form.user_name);
-      const expiry = new Date();
-      expiry.setHours(expiry.getHours() + 0.1);
-      setExpiryTime(expiry);
+      // const expiry = new Date();
+      // expiry.setHours(expiry.getHours() + 0.1);
+      // setExpiryTime(expiry);
       navigate("/shop");
     } catch {
       alert("Invalid credentials");
