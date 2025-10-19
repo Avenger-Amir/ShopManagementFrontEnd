@@ -3,14 +3,14 @@ import { useState } from "react";
 import api from "../api/axiosConfig";
 // import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import {setSessionId, setUserName} from "../util/LocalStorageUtil.js";
+import {setSessionId} from "../util/LocalStorageUtil.js";
 // import { AuthenticationInfo } from "../App";
 
 
 export default function Login() {
   // const { login } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ number: "", password: "" });
+  const [form, setForm] = useState({ mobile_number: "", password: "" });
   // const {userName, sessionId, expiryTime, setUserName, setSessionId, setExpiryTime } = useContext(AuthenticationInfo);
 
   const handleChange = (e) =>
@@ -19,11 +19,11 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/login", form);
+      const res = await api.post("/shopkeeper/login", form);
       const sessionId = res.headers["x-session-id"];
       // login(sessionId);
       setSessionId(sessionId);
-      setUserName(form.user_name);
+      // setUserName(form.user_name);
       // const expiry = new Date();
       // expiry.setHours(expiry.getHours() + 0.1);
       // setExpiryTime(expiry);
@@ -42,7 +42,7 @@ export default function Login() {
         <h2 className="text-xl font-bold mb-4">Login</h2>
         <input
           type="text"
-          name="number"
+          name="mobile_number"
           placeholder="Mobile Number"
           value={form.number}
           onChange={handleChange}

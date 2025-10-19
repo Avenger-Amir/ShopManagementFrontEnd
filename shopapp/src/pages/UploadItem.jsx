@@ -1,12 +1,13 @@
 import {getSessionId} from "../util/LocalStorageUtil.js";
 
-export default function UploadItem({shopId, onItemAdded, itemNames}) {
+export default function UploadItem({onItemAdded, itemNames}) {
 
     const sessionId = getSessionId();
     if (!sessionId) {
         alert("Only shop owners can upload items. Please log in.");
         return;
     }
+    // Todo(mushtaqu): Add validation here so that only shop owners can upload items and view this page
     const validateName = (name) => {
         if (itemNames?.includes(name)) {
             alert("Item name already exists. Please choose a different name.");
@@ -25,6 +26,9 @@ export default function UploadItem({shopId, onItemAdded, itemNames}) {
         const price = parseFloat(form.price.value);
         const quantity = parseInt(form.quantity.value);
         const description = form.description.value;
+        const brand_name = form.brand_name.value;
+        const weight = parseInt(form.weight.value);
+        const volume = parseInt(form.volume.value);
 
         if (!validateName(name)) {
             alert("Invalid name");
@@ -37,7 +41,10 @@ export default function UploadItem({shopId, onItemAdded, itemNames}) {
             price,
             quantity,
             description,
-            shop_id: 1  // match Java field name using @JsonProperty
+            shop_id: 1,  // match Java field name using @JsonProperty
+            brand_name,
+            weight,
+            volume
         };
 
         const itemsJsonBlob = new Blob([JSON.stringify((item))], {
@@ -81,6 +88,9 @@ export default function UploadItem({shopId, onItemAdded, itemNames}) {
                 <input type="number" name="price" placeholder="Price" step="0.01" required />
                 <input type="number" name="quantity" placeholder="Quantity" required />
                 <input type="text" name="description" placeholder="Description" />
+                <input type="text" name="brand_name" placeholder="Brand" />
+                <input type="number" name="weight" placeholder="Weight in grams" />
+                <input type="number" name="volume" placeholder="Volume in milliliters" />
                 <button type="submit">Upload Item</button>
             </form>
         </div>

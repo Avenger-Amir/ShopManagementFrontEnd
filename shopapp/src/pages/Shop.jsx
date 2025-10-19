@@ -1,9 +1,9 @@
 // src/pages/Shop.jsx
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import api from "../api/axiosConfig";
 // import { useAuth } from "../context/AuthContext";
 import ItemCard from "../components/ItemCard";
-import { AuthenticationInfo } from "../App";
+// import { AuthenticationInfo } from "../App";
 import Profile from "../components/Profile.jsx";
 import Cart from "./Cart.jsx";
 import { Link } from "react-router-dom";
@@ -85,5 +85,4 @@ export default function Shop() {
       </div>
   );
 }
-
 

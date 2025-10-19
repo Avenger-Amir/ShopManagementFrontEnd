@@ -4,11 +4,14 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Shop from "./pages/Shop";
 // import { AuthProvider } from "./context/AuthContext";
-import { createContext, useState } from "react";
+// import { createContext, useState } from "react";
 import Cart from "./pages/Cart.jsx";
-import ItemUpdate from "./pages/ItemUpdate.jsx";
+import ShopItemUpdate from "./pages/ShopItemUpdate.jsx";
+import UploadItem from "./pages/UploadItem.jsx";
+import ShopkeeperLogin from "./pages/ShopkeeperLogin.jsx";
+import ShopkeeperSignup from "./pages/ShopkeeperSignup.jsx";
 
-export const AuthenticationInfo = createContext();
+// export const AuthenticationInfo = createContext();
 function App() {
   // const [userName, setUserName] = useState("");
   // const [sessionId, setSessionId] = useState();
@@ -24,7 +27,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/itemupdate" element={<ItemUpdate />} />
+          <Route path="/itemupdate" element={<ShopItemUpdate />} />
+            <Route path="/uploadItem" element={<UploadItem />} />
+            <Route path="/shopkeeper/login" element={<ShopkeeperLogin />} />
+            <Route path="/shopkeeper/signup" element={<ShopkeeperSignup />} />
         </Routes>
       </BrowserRouter>
     // {/*</AuthenticationInfo.Provider>*/}

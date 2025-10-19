@@ -23,7 +23,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        const res=await api.post("/signUp", form);
+        const res=await api.post("/shopkeeper/sign_up", form);
         // alert("Signup successful! Please login.");
         console.log(res);
         if (res.status === 200 || res.status === 201) {

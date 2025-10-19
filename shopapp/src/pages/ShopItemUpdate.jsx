@@ -4,7 +4,7 @@ import UploadItem from "./UploadItem.jsx";
 import api from "../api/axiosConfig.js";
 import {getSessionId} from "../util/LocalStorageUtil.js";
 
-export default function ItemUpdate() {
+export default function ShopItemUpdate() {
     // const sessionId = localStorage.getItem("sessionId");
     const sessionId = getSessionId();
     const [shop, setShop] = useState(null);
@@ -51,22 +51,31 @@ export default function ItemUpdate() {
 
     return (
         <>
-            {items.map((item) => (
-                <ItemCard
-                    item={item}
-                    key={item.id}
-                    shopName={shop?.shop_name}
-                    ownerLogin={true}
-                />
-            ))}
-            <br />
-            {shop && (
-                <UploadItem
-                    shopId={shop.shop_id}
-                    onItemAdded={(newItem) => setItems([...items, newItem])}
-                    itemNames={items.map((item) => item.name)}
-                />
-            )}
+            {/*{items.map((item) => (*/}
+            {/*    <ItemCard*/}
+            {/*        item={item}*/}
+            {/*        key={item.id}*/}
+            {/*        shopName={shop?.shop_name}*/}
+            {/*        ownerLogin={true}*/}
+            {/*    />*/}
+            {/*))}*/}
+            {/*<br />*/}
+            {shop && updateItem(items)}
         </>
     );
+}
+
+function updateItem(items) {
+    items.map((item) => {
+        return (
+            <div className="item">
+                {/*<h2>item.i</h2>*/}
+                <h3>{item.name}</h3>
+                <p>Price: {item.price}</p>
+                {/*<p>Shop ID: {item.shop_id}</p>*/}
+                <p> Quantity: {item.quantity}</p>
+            </div>
+        )
+    })
+    return <div></div>;
 }
