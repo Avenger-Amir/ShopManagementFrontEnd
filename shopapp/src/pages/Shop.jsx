@@ -21,7 +21,7 @@ export default function Shop() {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const res = await api.get("/shop/");
+        const res = await api.get("/shop");
         // Merge new shops without duplicates
         const uniqueShops = res.data.map((shop) => ({
           id: shop.id.toString(),
