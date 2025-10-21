@@ -13,3 +13,8 @@ export function setUserName(userName) {
 export function getUserName() {
     return localStorage.getItem("userName");
 }
+
+export function clearSession() {
+    localStorage.removeItem("sessionId");
+    localStorage.removeItem("userName");
+}

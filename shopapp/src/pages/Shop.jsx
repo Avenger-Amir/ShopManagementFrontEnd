@@ -16,7 +16,7 @@ export default function Shop() {
     const [showFilters, setShowFilters] = useState(false);
 
     const sessionId = getSessionId();
-    const userName = getUserName();
+    // const userName = getUserName();
 
     useEffect(() => {
         const fetchShops = async () => {
@@ -67,7 +67,7 @@ export default function Shop() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* 🧭 Navbar */}
-           <Navbar userName={userName} setShowFilters={setShowFilters} />
+           <Navbar setShowFilters={setShowFilters} />
 
             {/* 🧩 Filters dropdown popup */}
             {showFilters && (

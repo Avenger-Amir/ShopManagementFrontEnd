@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
 
-export default function Navbar({ userName, setShowFilters }) {
+export default function Navbar({ setShowFilters }) {
     return (
         <nav className="bg-red-500 bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
             {/* Main container for centering and padding */}
@@ -19,7 +19,7 @@ export default function Navbar({ userName, setShowFilters }) {
 
                     {/* ✅ Group of links on the right */}
                     <div className="flex items-center space-x-6" style={{display: 'flex', alignItems: 'center'}}>
-                        <Profile userName={userName} />
+                        <Profile userName />
 
                         <button
                             onClick={() => setShowFilters((prev) => !prev)}
