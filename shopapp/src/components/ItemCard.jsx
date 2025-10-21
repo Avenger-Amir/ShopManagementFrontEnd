@@ -47,19 +47,20 @@ export default function ItemCard({ item, shopName, ownerLogin=false }) {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow p-4 flex flex-col">
+        <div className="bg-white rounded-lg shadow p-4 flex flex-col itemcard">
             <img
                 src={`http://localhost:9098${item.image_url}`}
                 alt={item.name}
                 className="picture"
             />
-            <h3 className="text-lg font-semibold">{item.name}</h3>
-            <p className="text-gray-600">{item.description}</p>
-            <p className="text-green-600 font-bold">Price: ₹{item.price}</p>
-            <p className="text-gray-500 text-sm">Shop: {shopName}</p>
+            <div className="p-2 flex flex-col itemcardtexts">
+            <h3 className="text-lg font-semibold itemcardname">{item.name}</h3>
+            <p className="text-gray-600 itemcarddescription">{item.description}</p>
+            <p className="text-green-600 font-bold itemcardprice">Price: ₹{item.price}</p>
+            <p className="text-gray-500 text-sm itemcardshopname">Shop: {shopName}</p>
 
             {!ownerLogin && quantity > 0 && (
-                <p className="text-blue-600 font-semibold">
+                <p className="text-blue-600 font-semibold itemcardprice">
                     Quantity: {quantity} | Subtotal: ₹{subtotal}
                 </p>
             )}
@@ -78,7 +79,7 @@ export default function ItemCard({ item, shopName, ownerLogin=false }) {
                 >
                     -
                 </button>
-            </div>)};
+            </div>)}
 
             {ownerLogin && (
                 <>
@@ -96,6 +97,7 @@ export default function ItemCard({ item, shopName, ownerLogin=false }) {
             )}
 
             {ownerLogin && <input id={item.id} type="text" placeholder="Enter Price" value={item.price}/>}
+            </div>
         </div>
     );
 }

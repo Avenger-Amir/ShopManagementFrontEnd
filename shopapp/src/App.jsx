@@ -10,6 +10,7 @@ import ShopItemUpdate from "./pages/ShopItemUpdate.jsx";
 import UploadItem from "./pages/UploadItem.jsx";
 import ShopkeeperLogin from "./pages/ShopkeeperLogin.jsx";
 import ShopkeeperSignup from "./pages/ShopkeeperSignup.jsx";
+import LoginSelection from "./pages/LoginSelection.jsx";
 
 // export const AuthenticationInfo = createContext();
 function App() {
@@ -23,14 +24,19 @@ function App() {
     // >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/shop" element={<Shop />} />
+            <Route path="/" element={<Shop />} />
+            <Route path="/login" element={<LoginSelection />} />
+            <Route path="/consumer/login" element={<Login />} />
+            <Route path="/merchant/login" element={<ShopkeeperLogin />} />
+            <Route path="/merchant/signup" element={<ShopkeeperSignup />} />
+            <Route path="/consumer/signup" element={<Signup />} />
+
+
+            {/*<Route path="/signup" element={<Signup />} />*/}
+          {/*<Route path="/shop" element={<Shop />} />*/}
           <Route path="/cart" element={<Cart />} />
           <Route path="/itemupdate" element={<ShopItemUpdate />} />
             <Route path="/uploadItem" element={<UploadItem />} />
-            <Route path="/shopkeeper/login" element={<ShopkeeperLogin />} />
-            <Route path="/shopkeeper/signup" element={<ShopkeeperSignup />} />
         </Routes>
       </BrowserRouter>
     // {/*</AuthenticationInfo.Provider>*/}

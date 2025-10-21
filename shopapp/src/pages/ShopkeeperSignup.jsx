@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../api/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { setSessionId, setUserName } from "../util/LocalStorageUtil.js";
+import Address from "../components/Address.jsx";
 
 export default function Signup() {
     // 1. Updated the state to have a nested address object
@@ -48,7 +49,7 @@ export default function Signup() {
                 const sessionId = res.headers["x-session-id"];
                 setSessionId(sessionId);
                 setUserName(form.user_name);
-                navigate("/shop"); // 🚀 redirect to shop page
+                navigate("/"); // 🚀 redirect to shop page
             }
         } catch (error) {
             console.error("Error during signup:", error.response);
@@ -108,37 +109,7 @@ export default function Signup() {
                 />
 
                 {/* --- 3. Replaced single address input with three separate inputs --- */}
-                <h3 className="text-lg font-semibold mb-2 text-gray-600">Address</h3>
-                <input
-                    key="street"
-                    type="text"
-                    name="street"
-                    placeholder="Street"
-                    value={form.address.street}
-                    onChange={handleChange}
-                    className="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-blue-500 transition"
-                    required
-                />
-                <input
-                    key="city"
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    value={form.address.city}
-                    onChange={handleChange}
-                    className="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-blue-500 transition"
-                    required
-                />
-                <input
-                    key="postal_code"
-                    type="text"
-                    name="postal_code"
-                    placeholder="Postal Code"
-                    value={form.address.postal_code}
-                    onChange={handleChange}
-                    className="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-blue-500 transition"
-                    required
-                />
+                <Address form={form} handleChange={handleChange} />
 
                 <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
                     Sign Up

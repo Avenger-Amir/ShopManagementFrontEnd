@@ -24,7 +24,7 @@ export default function Cart() {
         }
         try {
             const res = api.post("/shop/order", {
-                    "shop_id": items[0].shop_id, "status": "ORDERED", "shop_order_list": items.map((item) => ({
+                    "shop_id": items[0].shop_id, "status": "PROCESSING", "shop_order_list": items.map((item) => ({
                         item_id: item.id,
                         quantity: item.quantity
                     }))
@@ -41,7 +41,7 @@ export default function Cart() {
     }
     return (
         <div className="p-4 bg-gray-100 rounded-lg shadow-md">
-            <Link to="/shop" className="text-blue-500 underline mb-4 inline-block">Shop</Link>
+            <Link to="/" className="text-blue-500 underline mb-4 inline-block">Shop</Link>
             <h2 className="text-xl font-bold mb-2">Your Cart</h2>
             {items.length === 0 ? (
                 <p>No items in cart</p>
@@ -50,6 +50,11 @@ export default function Cart() {
                     <ul>
                         {items.map((item) => (
                             <li key={item.id} className="flex justify-between">
+                                <img
+                                    src={`http://localhost:9098${item.image_url}`}
+                                    alt={item.name}
+                                    className="picture"
+                                />
                                 {item.name} x {item.quantity} = ₹{item.price * item.quantity}
                             </li>
                         ))}

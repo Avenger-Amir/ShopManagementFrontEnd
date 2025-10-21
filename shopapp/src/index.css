@@ -22,13 +22,13 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+/*body {*/
+/*  margin: 0;*/
+/*  display: flex;*/
+/*  place-items: center;*/
+/*  min-width: 320px;*/
+/*  min-height: 100vh;*/
+/*}*/
 
 h1 {
   font-size: 3.2em;
@@ -70,4 +70,40 @@ button:focus-visible {
 .picture {
   width: 150px;
   height: 150px;
+}
+
+/* Apply a subtle gradient background to the entire app */
+body {
+  background-color: #f8fafc; /* A light gray fallback */
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  font-family: 'Inter', sans-serif; /* A clean, modern font */
+}
+
+/* Custom styles for a card container to ensure consistency */
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300;
+  }
+}
+
+.itemcard {
+  float: left;
+  margin: 20px;
+}
+
+.itemcardname {
+  margin: 0;
+}
+
+.itemcarddescription {
+    margin: 0;
+}
+
+.itemcardshopname {
+    margin: 0;
+}
+
+.itemcardprice {
+    margin: 0;
+    font-weight: bold;
 }
